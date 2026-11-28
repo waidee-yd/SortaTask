@@ -1,0 +1,116 @@
+@{
+    ViewData["Title"] = "Register";
+}
+
+<style>
+    .register-screen {
+        min-height: 75vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+    }
+
+    .brand-title {
+        font-size: 3rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        margin-bottom: 1.5rem;
+        line-height: 1;
+    }
+
+    .brand-dot {
+        color: #2563eb;
+    }
+
+   .register-card h2 {
+    margin-top: 0;
+    margin-bottom: 1.15rem;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+    .field-group {
+        margin-bottom: 1rem;
+    }
+
+    .field-group label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 600;
+    }
+
+    .field-group input {
+        width: 100%;
+        padding: 0.55rem 0.7rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        box-sizing: border-box;
+    }
+
+    .register-btn {
+        width: 100%;
+        padding: 0.65rem;
+        border: none;
+        border-radius: 6px;
+        background: #2563eb;
+        color: #ffffff;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .register-error {
+        color: #dc2626;
+        margin-bottom: 1rem;
+    }
+
+    .login-prompt {
+        margin-top: 1rem;
+        margin-bottom: 0;
+        text-align: center;
+        font-size: 0.92rem;
+    }
+</style>
+
+<div class="register-screen">
+    <h1 class="brand-title">SortaTask<span class="brand-dot">.</span></h1>
+
+    <div class="register-card">
+        <h2>Register</h2>
+
+        @if (ViewBag.Error != null)
+        {
+            <p class="register-error">@ViewBag.Error</p>
+        }
+
+        <form asp-controller="Account" asp-action="Register" method="post">
+            <div class="field-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" />
+            </div>
+
+            <div class="field-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" />
+            </div>
+
+            <div class="field-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" />
+            </div>
+
+            <div class="field-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" />
+            </div>
+
+            <button type="submit" class="register-btn">Create Account</button>
+        </form>
+
+        <p class="login-prompt">
+            Already have an account?
+            <a asp-controller="Account" asp-action="Login">Login</a>
+        </p>
+    </div>
+</div>

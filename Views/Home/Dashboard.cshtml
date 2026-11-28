@@ -1,0 +1,96 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<style>
+    .dashboard-wrap {
+        max-width: 760px;
+        margin: 2.5rem auto;
+        padding: 1.5rem;
+    }
+
+    .dashboard-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+    }
+
+    .brand-title {
+        font-size: 2rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        margin: 0;
+        line-height: 1;
+    }
+
+    .brand-dot {
+        color: #2563eb;
+    }
+
+    .logout-btn {
+        padding: 0.5rem 0.9rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        background: #ffffff;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .logout-btn:hover {
+        background: #f8fafc;
+    }
+
+    .dashboard-card {
+        border: 1px solid #d1d5db;
+        border-radius: 10px;
+        padding: 1.75rem;
+        background: #ffffff;
+    }
+
+    .dashboard-card h2 {
+        margin-top: 0;
+        margin-bottom: 0.4rem;
+        font-size: 1.35rem;
+        font-weight: 700;
+    }
+
+    .welcome-sub {
+        margin: 0 0 1.25rem 0;
+        color: #475569;
+    }
+
+    .task-placeholder {
+        border: 1px dashed #cbd5e1;
+        border-radius: 8px;
+        padding: 1.25rem;
+        background: #f8fafc;
+        color: #475569;
+    }
+
+    .task-placeholder strong {
+        display: block;
+        color: #0f172a;
+        margin-bottom: 0.25rem;
+    }
+</style>
+
+<div class="dashboard-wrap">
+    <div class="dashboard-header">
+        <h1 class="brand-title">SortaTask<span class="brand-dot">.</span></h1>
+
+        <form asp-controller="Account" asp-action="Logout" method="post">
+            <button type="submit" class="logout-btn">Log Out</button>
+        </form>
+    </div>
+
+    <div class="dashboard-card">
+        <h2>Welcome, @ViewBag.Username!</h2>
+        <p class="welcome-sub">You are signed in.</p>
+
+        <div class="task-placeholder">
+            <strong>Tasks</strong>
+            <span>pansamantala lang pu</span>
+        </div>
+    </div>
+</div>

@@ -16,6 +16,18 @@ namespace SortaTask.Controllers
             return View();
         }
 
+        public IActionResult Dashboard ()
+        {
+            var username = HttpContext.Session.GetString ("Username");
+            if (string.IsNullOrEmpty(username))
+            {
+                return RedirectToAction ("Login", "Account");
+            }
+
+            ViewBag.Username = username;
+            return View ();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
